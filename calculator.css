@@ -1,1 +1,72 @@
-/*This will contain the CSS for this project*/
+body{
+    background-color: #000;
+}
+#calculator{
+    width: 350px;
+    height: 600px; 
+    background-color: #000;
+    margin: 50px auto;
+    display:flex;
+    flex-direction: column;
+    border-radius: 15px;
+    border:#ccdeff solid 2px;
+}
+
+#display-box{
+    flex: 2;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    width:95%;
+    margin: 0 auto;
+}
+#display{
+  background-color: #444a77;
+  border-radius: 20px;
+  flex:1;
+  justify-self: center;
+  height:150px; 
+  gap: 10px;
+}
+
+
+
+
+#calculator-buttons{
+    flex: 4;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.row{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.math{
+    background-color: #cc2233;
+}
+.number{
+    background-color: #ff7744;
+}
+
+.function{
+    background-color: #2129ff;
+}
+
+.modifier{
+    background-color: #99dd66;
+    color:#444a77
+}
+
+button{
+    width:80%;
+    height:70px;
+    border-radius:15px;
+    border:none;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #ccdeff;
+    margin: 5px;
+}
