@@ -1,5 +1,31 @@
 //This will contain the javascript for this project
-let base = 0;
+let store = 0;
+
+
+
+const NUMBERS = Array.from(document.querySelectorAll('.number'));
+const OPERATORS = Array.from(document.querySelectorAll('.math'));
+NUMBERS.forEach(function(button){
+    button.addEventListener('click', function(){
+        getNumber(button);
+    });
+})
+
+    
+
+function getNumber(button){
+    let buttonValue = button.innerText;
+    if(!store){
+        store = buttonValue;
+    }else{
+        store +=buttonValue;
+    }
+    
+    
+    console.log(store);
+
+}
+
 
 
 function add(num1, num2){
