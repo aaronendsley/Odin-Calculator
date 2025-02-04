@@ -9,6 +9,10 @@ NUMBERS.forEach(function(button){
     button.addEventListener('click', function(){
         getNumber(button);
     });
+});
+
+document.querySelector('#delete').addEventListener('click', function(){
+    del();
 })
 
     
@@ -16,9 +20,9 @@ NUMBERS.forEach(function(button){
 function getNumber(button){
     let buttonValue = button.innerText;
     if(!store){
-        store = buttonValue;
+        store = String(buttonValue);
     }else{
-        store +=buttonValue;
+        store +=String(buttonValue);
     }
     
     
@@ -26,6 +30,16 @@ function getNumber(button){
 
 }
 
+
+function del(){
+ if(store !== ''){
+ store = store.slice(0, -1);
+ console.log(store);
+ }else{
+    return;
+ }
+
+}
 
 
 function add(num1, num2){
