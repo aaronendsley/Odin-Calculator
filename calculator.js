@@ -15,6 +15,11 @@ document.querySelector('#delete').addEventListener('click', function(){
     del();
 })
 
+document.querySelector('#clear').addEventListener('click', function clear(){
+    store = "";
+    console.log(store);
+})
+
     
 
 function getNumber(button){
@@ -38,8 +43,8 @@ function del(){
  }else{
     return;
  }
-
 }
+
 
 
 function add(num1, num2){
