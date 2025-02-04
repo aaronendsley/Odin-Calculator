@@ -1,6 +1,16 @@
 //This will contain the javascript for this project
 let store = 0;
 
+//update the calculotor display
+function updateDisplay(){
+    if(!store){
+        document.getElementById("input").textContent = "0"
+    }else{
+        document.getElementById("input").textContent = store.split('').slice(-12).join('');
+        //getting the last 12 items so that it will still fit the display 
+    }
+    
+} 
 
 
 const NUMBERS = Array.from(document.querySelectorAll('.number'));
@@ -17,7 +27,7 @@ document.querySelector('#delete').addEventListener('click', function(){
 
 document.querySelector('#clear').addEventListener('click', function clear(){
     store = "";
-    console.log(store);
+    updateDisplay();
 })
 
     
@@ -26,21 +36,20 @@ function getNumber(button){
     let buttonValue = button.innerText;
     if(!store){
         store = String(buttonValue);
+        updateDisplay();
     }else{
         store +=String(buttonValue);
+        updateDisplay();
     }
-    
-    
-    console.log(store);
-
 }
 
 
 function del(){
  if(store !== ''){
  store = store.slice(0, -1);
- console.log(store);
+ updateDisplay();
  }else{
+    updateDisplay();
     return;
  }
 }
