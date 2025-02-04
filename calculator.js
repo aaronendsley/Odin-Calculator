@@ -15,11 +15,26 @@ function updateDisplay(){
 
 const NUMBERS = Array.from(document.querySelectorAll('.number'));
 const OPERATORS = Array.from(document.querySelectorAll('.math'));
-NUMBERS.forEach(function(button){
-    button.addEventListener('click', function(){
-        getNumber(button);
+function addListenerToButtons(setsOfButtons){
+    console.log(setsOfButtons);
+   setsOfButtons.forEach(function(set){
+
+    set.forEach(function(button){
+
+        button.addEventListener('click', function(){
+            getButtonValue(button);
+        });
+
     });
-});
+   })
+}
+
+addListenerToButtons([OPERATORS, NUMBERS]);
+
+
+
+
+
 
 document.querySelector('#delete').addEventListener('click', function(){
     del();
@@ -32,9 +47,10 @@ document.querySelector('#clear').addEventListener('click', function clear(){
 
     
 
-function getNumber(button){
+function getButtonValue(button){
     let buttonValue = button.innerText;
     if(!store){
+
         store = String(buttonValue);
         updateDisplay();
     }else{
