@@ -46,6 +46,10 @@ document.querySelector('#clear').addEventListener('click', function clear(){
     updateDisplay();
 })
 
+document.querySelector('.evaluate').addEventListener('click', function evaluation(){
+    evaluate();
+} )
+
  
 //get the value of the Math Buttons and Store them
 function getMathValue(button){
@@ -70,6 +74,17 @@ function getButtonValue(button){
     }
 }
 
+function evaluate(){
+    if(store && opereration && num1){
+        num2 = store;
+        store = String(operate(num1, num2, opereration));
+        updateDisplay();
+        num1 = 0;
+        num2 = 0;
+        opereration = undefined;
+    }
+}
+
 
 function del(){
  if(store !== ''){
@@ -84,23 +99,23 @@ function del(){
 
 
 function add(num1, num2){
-    return num1 + num2;
+    return (Number(num1)) + (Number(num2));
 }
 
 function subtract(num1, num2){
-    return num1 - num2;
+    return (Number(num1)) - (Number(num2));
 }
 
 function multiply(num1, num2){
-    return num1 * num2
+    return (Number(num1)) * (Number(num2))
 }
 
 function divide(num1, num2){
-    return num1 / num2;
+    return (Number(num1)) / (Number(num2));
 }
 
 function remainder(num1, num2){
-    return num1 % num2;
+    return (Number(num1)) % (Number(num2));
 }
 
 function operate(num1, num2, operator){
