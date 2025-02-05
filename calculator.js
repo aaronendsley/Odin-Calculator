@@ -1,5 +1,8 @@
 //This will contain the javascript for this project
 let store = 0;
+let num1 = 0;
+let num2 = 0;
+let opereration;
 
 //update the calculotor display
 function updateDisplay(){
@@ -15,21 +18,19 @@ function updateDisplay(){
 
 const NUMBERS = Array.from(document.querySelectorAll('.number'));
 const OPERATORS = Array.from(document.querySelectorAll('.math'));
-function addListenerToButtons(setsOfButtons){
-    console.log(setsOfButtons);
+const MODIFIER = Array.from(document.querySelectorAll('.modifier'));
+function addListenerToButtons(setsOfButtons, operation){
    setsOfButtons.forEach(function(set){
-
     set.forEach(function(button){
-
         button.addEventListener('click', function(){
-            getButtonValue(button);
+            operation(button);
         });
-
     });
    })
 }
 
-addListenerToButtons([OPERATORS, NUMBERS]);
+addListenerToButtons([NUMBERS, MODIFIER], getButtonValue);
+addListenerToButtons([OPERATORS], getMathValue);
 
 
 
@@ -45,7 +46,17 @@ document.querySelector('#clear').addEventListener('click', function clear(){
     updateDisplay();
 })
 
-    
+ 
+//get the value of the Math Buttons and Store them
+function getMathValue(button){
+    if(!num1){
+        num1 = store;
+        store = 0;
+        updateDisplay();
+    }
+    opereration = button.innerText;
+}
+
 
 function getButtonValue(button){
     let buttonValue = button.innerText;
@@ -88,6 +99,10 @@ function divide(num1, num2){
     return num1 / num2;
 }
 
+function remainder(num1, num2){
+    return num1 % num2;
+}
+
 function operate(num1, num2, operator){
     let result;
     switch(operator){
@@ -111,6 +126,11 @@ function operate(num1, num2, operator){
         result = divide(num1, num2);
         console.log('dividing', result);
         break;
+
+        case "%":
+            result = remainder(num1, num2);
+            console.log('finding the remainder', result);
+            break;
 
         default:
         console.log('no operation');
