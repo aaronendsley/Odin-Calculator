@@ -56,10 +56,14 @@ document.querySelector('.evaluate').addEventListener('click', function evaluatio
  
 //get the value of the Math Buttons and Store them
 function getMathValue(button){
-    if(!num1){
+    if(!num1 && !num2){
+        console.log('first tree')
         num1 = store;
         store = "";
-        updateDisplay();
+    }else{
+        evaluate();
+        num1 = store;
+        store = "";
     }
     opereration = button.innerText;
 }
