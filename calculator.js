@@ -43,6 +43,9 @@ document.querySelector('#delete').addEventListener('click', function(){
 
 document.querySelector('#clear').addEventListener('click', function clear(){
     store = "";
+    num1 = 0;
+    num2 = 0;
+    operation = undefined;
     updateDisplay();
 })
 
@@ -55,7 +58,7 @@ document.querySelector('.evaluate').addEventListener('click', function evaluatio
 function getMathValue(button){
     if(!num1){
         num1 = store;
-        store = 0;
+        store = "";
         updateDisplay();
     }
     opereration = button.innerText;
@@ -151,5 +154,5 @@ function operate(num1, num2, operator){
         console.log('no operation');
     }
 
-    return result;
+    return Math.round(result);
 }
