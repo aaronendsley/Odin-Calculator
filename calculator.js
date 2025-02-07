@@ -153,6 +153,6 @@ function operate(num1, num2, operator){
         default:
         console.log('no operation');
     }
-
-    return Math.round(result);
+    console.log(result);
+    return Math.round(result * 100) / 100;
 }
