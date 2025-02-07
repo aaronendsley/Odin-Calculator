@@ -53,11 +53,12 @@ document.querySelector('.evaluate').addEventListener('click', function evaluatio
     evaluate();
 } )
 
+
  
 //get the value of the Math Buttons and Store them
 function getMathValue(button){
+    if(store !== "RED ALERT"){
     if(!num1 && !num2){
-        console.log('first tree')
         num1 = store;
         store = "";
     }else{
@@ -66,18 +67,28 @@ function getMathValue(button){
         store = "";
     }
     opereration = button.innerText;
+}else{
+    store ="";
+    updateDisplay();
+}
 }
 
 
 function getButtonValue(button){
     let buttonValue = button.innerText;
+    
     if(!store){
-
         store = String(buttonValue);
         updateDisplay();
     }else{
+        if(store !== "RED ALERT"){
         store +=String(buttonValue);
         updateDisplay();
+        }else{
+            store = String(buttonValue);
+            updateDisplay();
+            
+        }
     }
 }
 
@@ -118,6 +129,9 @@ function multiply(num1, num2){
 }
 
 function divide(num1, num2){
+    if(num2 === '0' ){
+        return "RED ALERT";
+    }
     return (Number(num1)) / (Number(num2));
 }
 
@@ -157,6 +171,8 @@ function operate(num1, num2, operator){
         default:
         console.log('no operation');
     }
-    console.log(result);
+    if(result === "RED ALERT"){
+        return result;
+    }
     return Math.round(result * 100) / 100;
 }
