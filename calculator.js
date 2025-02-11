@@ -15,7 +15,6 @@ function updateDisplay(){
     
 } 
 
-
 const NUMBERS = Array.from(document.querySelectorAll('.number'));
 const OPERATORS = Array.from(document.querySelectorAll('.math'));
 const MODIFIER = Array.from(document.querySelectorAll('.modifier'));
@@ -32,11 +31,6 @@ function addListenerToButtons(setsOfButtons, operation){
 addListenerToButtons([NUMBERS, MODIFIER], getButtonValue);
 addListenerToButtons([OPERATORS], getMathValue);
 
-
-
-
-
-
 document.querySelector('#delete').addEventListener('click', function(){
     del();
 })
@@ -51,10 +45,22 @@ document.querySelector('#clear').addEventListener('click', function clear(){
 
 document.querySelector('.evaluate').addEventListener('click', function evaluation(){
     evaluate();
-} )
+} );
 
+document.querySelector('#swap-state').addEventListener('click', function swapState(){
+    if(!store){
+        return;
+    }else{
+        if(Math.sign(Number(store))==="-1"){
+            store = String((Number(store)) * 1);
+            updateDisplay();
+        }else{
+            store = String((Number(store) *  -1));
+            updateDisplay();
+        }
+    }
+})
 
- 
 //get the value of the Math Buttons and Store them
 function getMathValue(button){
     if(store !== "RED ALERT"){
@@ -114,8 +120,6 @@ function del(){
  }
 }
 
-
-
 function add(num1, num2){
     return (Number(num1)) + (Number(num2));
 }
@@ -135,9 +139,7 @@ function divide(num1, num2){
     return (Number(num1)) / (Number(num2));
 }
 
-function remainder(num1, num2){
-    return (Number(num1)) % (Number(num2));
-}
+
 
 function operate(num1, num2, operator){
     let result;
@@ -162,11 +164,6 @@ function operate(num1, num2, operator){
         result = divide(num1, num2);
         console.log('dividing', result);
         break;
-
-        case "%":
-            result = remainder(num1, num2);
-            console.log('finding the remainder', result);
-            break;
 
         default:
         console.log('no operation');
