@@ -48,9 +48,11 @@ document.querySelector('.evaluate').addEventListener('click', function evaluatio
 } );
 
 document.querySelector('#swap-state').addEventListener('click', function swapState(){
+    
     if(!store){
         return;
     }else{
+        if(store !== "RED ALERT"){
         if(Math.sign(Number(store))==="-1"){
             store = String((Number(store)) * 1);
             updateDisplay();
@@ -58,6 +60,7 @@ document.querySelector('#swap-state').addEventListener('click', function swapSta
             store = String((Number(store) *  -1));
             updateDisplay();
         }
+    }
     }
 })
 
